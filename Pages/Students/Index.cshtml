@@ -1,0 +1,64 @@
+﻿@page
+@model Task1CRUD.Pages.Students.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@*<form method="post" asp-page-handler="Logout">
+        <button type="submit">Logout</button>
+    </form>*@
+<script>
+    function delhistory() {
+        window.history.forward();
+    }
+</script>
+<div class="text-right">
+    <form method="post" asp-page="Logout">
+        <input type="submit" class="btn btn-primary " id="logout" value="Logout" />
+    </form>
+</div>
+<div class="text-right">
+    @*<a asp-page="LoginIndex" asp-page-handler="Logout" >Logout</a>*@
+</div>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table" onload="delhistory()">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].DOB)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Student)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @*<img src="~/images/@Model.FileName" />*@
+
+
+                    <a href="~/images/boyuser.jfif">~/images/boyuser.jfif</a>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

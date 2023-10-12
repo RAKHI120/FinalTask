@@ -1,0 +1,29 @@
+﻿@page
+@model Task1CRUD.Pages.Category.FileuploadModel
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <form method="post" asp-page="Index" enctype="multipart/form-data">
+        Photo <input type="file" name="photo" accept="image/*" />
+        <br />
+        <input type="submit" value="Upload" />
+        @if (!string.IsNullOrEmpty(Model.FileName))
+        {
+            <span>
+                <br />
+                <img src="~/images/@Model.FileName" />
+            </span>
+        }
+    </form>
+
+</body>
+</html>
